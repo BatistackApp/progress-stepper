@@ -1,0 +1,330 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@source '../views/**/*.blade.php';
+@source '../../src/**/*.php';
+
+.ps-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ps-container[data-ps-direction="horizontal"] {
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.ps-container[data-ps-direction="vertical"] {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+}
+
+.ps-container[data-ps-inline="true"] {
+    justify-content: flex-end;
+}
+
+.ps-step {
+    position: relative;
+    display: inline-flex;
+}
+
+.ps-container[data-ps-direction="vertical"] .ps-step {
+    display: flex;
+}
+
+.ps-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    border: 1px solid var(--gray-300);
+    box-shadow: none;
+    background-color: #ffffff;
+    color: var(--gray-700);
+    font-weight: 500;
+    transition-duration: 75ms;
+    white-space: nowrap;
+}
+
+.dark .ps-button {
+    border-color: var(--gray-700);
+    background-color: var(--gray-900);
+    color: var(--gray-300);
+}
+
+.ps-container[data-ps-direction="horizontal"] .ps-step:first-child .ps-button {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.ps-container[data-ps-direction="horizontal"] .ps-step:last-child .ps-button {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.ps-container[data-ps-direction="vertical"] .ps-step:first-child .ps-button {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.ps-container[data-ps-direction="vertical"] .ps-step:last-child .ps-button {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* --- Size variants --- */
+.ps-container[data-ps-size="sm"] .ps-button {
+    min-height: 30px;
+    padding: 4px 16px 4px 24px;
+    font-size: 0.75rem;
+}
+
+.ps-container[data-ps-size="md"] .ps-button {
+    min-height: 38px;
+    padding: 6px 20px 6px 30px;
+    font-size: 0.875rem;
+}
+
+.ps-container[data-ps-size="lg"] .ps-button {
+    min-height: 46px;
+    padding: 8px 24px 8px 36px;
+    font-size: 1rem;
+}
+
+/* --- Compact (icon-only) --- */
+.ps-container[data-ps-compact="true"] .ps-button {
+    padding: 6px 14px;
+    min-width: 38px;
+    justify-content: center;
+}
+
+.ps-container[data-ps-compact="true"] .ps-label-text,
+.ps-container[data-ps-compact="true"] .ps-description {
+    display: none;
+}
+
+/* --- Separators --- */
+.ps-container[data-ps-direction="horizontal"][data-ps-separator="arrow"] .ps-button::after,
+.ps-container[data-ps-direction="horizontal"][data-ps-separator="chevron"] .ps-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -14px;
+    width: 26px;
+    height: 26px;
+    z-index: 1;
+    transform: translateY(-50%) rotate(45deg);
+    background-color: inherit;
+    border-right: 1px solid var(--gray-300);
+    border-top: 1px solid var(--gray-300);
+    transition-duration: 75ms;
+}
+
+.dark .ps-container[data-ps-separator="arrow"] .ps-button::after,
+.dark .ps-container[data-ps-separator="chevron"] .ps-button::after {
+    border-right-color: var(--gray-700);
+    border-top-color: var(--gray-700);
+    background-color: inherit;
+}
+
+.ps-container[data-ps-separator="chevron"] .ps-button::after {
+    width: 20px;
+    height: 20px;
+    right: -10px;
+}
+
+.ps-container[data-ps-direction="horizontal"][data-ps-separator="dot"] .ps-step:not(:last-child)::after {
+    content: "•";
+    align-self: center;
+    padding: 0 6px;
+    color: var(--gray-400);
+}
+
+.ps-container[data-ps-direction="horizontal"][data-ps-separator="line"] .ps-step:not(:last-child)::after {
+    content: "";
+    align-self: center;
+    width: 20px;
+    height: 1px;
+    background-color: var(--gray-300);
+    margin: 0 4px;
+}
+
+.dark .ps-container[data-ps-separator="line"] .ps-step:not(:last-child)::after {
+    background-color: var(--gray-700);
+}
+
+.ps-container[data-ps-direction="horizontal"] .ps-step:last-child .ps-button::after {
+    content: none;
+}
+
+/* Vertical down-chevron */
+.ps-container[data-ps-direction="vertical"][data-ps-separator="arrow"] .ps-step:not(:last-child)::after,
+.ps-container[data-ps-direction="vertical"][data-ps-separator="chevron"] .ps-step:not(:last-child)::after {
+    content: "";
+    display: block;
+    align-self: center;
+    width: 2px;
+    height: 14px;
+    background-color: var(--gray-300);
+    margin: 2px 0;
+}
+
+.dark .ps-container[data-ps-direction="vertical"] .ps-step:not(:last-child)::after {
+    background-color: var(--gray-700);
+}
+
+/* --- Themes --- */
+.ps-container[data-ps-theme="outlined"] .ps-button {
+    background-color: transparent;
+}
+
+.ps-container[data-ps-theme="minimal"] .ps-button {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.ps-container[data-ps-theme="minimal"] .ps-button::after {
+    border: none;
+    background-color: transparent;
+}
+
+/* --- Per-step color token mapping ---
+   Maps data-ps-color to Filament's globally-available --{color}-{shade} CSS
+   variables, with safe fallbacks. This keeps the plugin self-contained so the
+   fill rules below work without depending on Filament's .fi-btn-color-* scope. */
+.ps-step[data-ps-color="primary"] .ps-button {
+    --ps-color-500: var(--primary-500, #3b82f6);
+    --ps-color-600: var(--primary-600, #2563eb);
+}
+.ps-step[data-ps-color="success"] .ps-button {
+    --ps-color-500: var(--success-500, #22c55e);
+    --ps-color-600: var(--success-600, #16a34a);
+}
+.ps-step[data-ps-color="danger"] .ps-button {
+    --ps-color-500: var(--danger-500, #ef4444);
+    --ps-color-600: var(--danger-600, #dc2626);
+}
+.ps-step[data-ps-color="warning"] .ps-button {
+    --ps-color-500: var(--warning-500, #f59e0b);
+    --ps-color-600: var(--warning-600, #d97706);
+}
+.ps-step[data-ps-color="info"] .ps-button {
+    --ps-color-500: var(--info-500, #3b82f6);
+    --ps-color-600: var(--info-600, #2563eb);
+}
+.ps-step[data-ps-color="gray"] .ps-button {
+    --ps-color-500: var(--gray-500, #6b7280);
+    --ps-color-600: var(--gray-600, #4b5563);
+}
+
+/* --- Active state styling (filled theme) --- */
+.ps-container[data-ps-theme="filled"] .ps-input:checked + .ps-button,
+.ps-container[data-ps-theme="filled"] .ps-step[data-ps-status="current"] .ps-button,
+.ps-container[data-ps-theme="filled"] .ps-step[data-ps-status="completed"] .ps-button,
+.ps-container[data-ps-theme="filled"] .ps-step[data-ps-status="error"] .ps-button {
+    color: #fff;
+    background-color: var(--ps-color-600);
+    border-color: var(--ps-color-600);
+}
+
+/* Arrow / chevron connector fill when the step is active */
+.ps-container[data-ps-theme="filled"][data-ps-separator="arrow"] .ps-input:checked + .ps-button::after,
+.ps-container[data-ps-theme="filled"][data-ps-separator="arrow"] .ps-step[data-ps-status="current"] .ps-button::after,
+.ps-container[data-ps-theme="filled"][data-ps-separator="arrow"] .ps-step[data-ps-status="completed"] .ps-button::after,
+.ps-container[data-ps-theme="filled"][data-ps-separator="arrow"] .ps-step[data-ps-status="error"] .ps-button::after,
+.ps-container[data-ps-theme="filled"][data-ps-separator="chevron"] .ps-input:checked + .ps-button::after,
+.ps-container[data-ps-theme="filled"][data-ps-separator="chevron"] .ps-step[data-ps-status="current"] .ps-button::after,
+.ps-container[data-ps-theme="filled"][data-ps-separator="chevron"] .ps-step[data-ps-status="completed"] .ps-button::after,
+.ps-container[data-ps-theme="filled"][data-ps-separator="chevron"] .ps-step[data-ps-status="error"] .ps-button::after {
+    background-color: var(--ps-color-600);
+    border-right-color: var(--ps-color-600);
+    border-top-color: var(--ps-color-600);
+}
+
+.dark .ps-container[data-ps-theme="filled"] .ps-input:checked + .ps-button,
+.dark .ps-container[data-ps-theme="filled"] .ps-step[data-ps-status="current"] .ps-button,
+.dark .ps-container[data-ps-theme="filled"] .ps-step[data-ps-status="completed"] .ps-button,
+.dark .ps-container[data-ps-theme="filled"] .ps-step[data-ps-status="error"] .ps-button {
+    background-color: var(--ps-color-500);
+    border-color: var(--ps-color-500);
+}
+
+.dark .ps-container[data-ps-theme="filled"][data-ps-separator="arrow"] .ps-input:checked + .ps-button::after,
+.dark .ps-container[data-ps-theme="filled"][data-ps-separator="arrow"] .ps-step[data-ps-status="current"] .ps-button::after,
+.dark .ps-container[data-ps-theme="filled"][data-ps-separator="arrow"] .ps-step[data-ps-status="completed"] .ps-button::after,
+.dark .ps-container[data-ps-theme="filled"][data-ps-separator="arrow"] .ps-step[data-ps-status="error"] .ps-button::after,
+.dark .ps-container[data-ps-theme="filled"][data-ps-separator="chevron"] .ps-input:checked + .ps-button::after,
+.dark .ps-container[data-ps-theme="filled"][data-ps-separator="chevron"] .ps-step[data-ps-status="current"] .ps-button::after,
+.dark .ps-container[data-ps-theme="filled"][data-ps-separator="chevron"] .ps-step[data-ps-status="completed"] .ps-button::after,
+.dark .ps-container[data-ps-theme="filled"][data-ps-separator="chevron"] .ps-step[data-ps-status="error"] .ps-button::after {
+    background-color: var(--ps-color-500);
+    border-right-color: var(--ps-color-500);
+    border-top-color: var(--ps-color-500);
+}
+
+/* --- Outlined active state --- */
+.ps-container[data-ps-theme="outlined"] .ps-input:checked + .ps-button,
+.ps-container[data-ps-theme="outlined"] .ps-step[data-ps-status="current"] .ps-button {
+    border-color: var(--ps-color-500);
+    color: var(--ps-color-600);
+}
+
+/* --- Minimal active state --- */
+.ps-container[data-ps-theme="minimal"] .ps-input:checked + .ps-button,
+.ps-container[data-ps-theme="minimal"] .ps-step[data-ps-status="current"] .ps-button {
+    color: var(--ps-color-600);
+    font-weight: 600;
+}
+
+/* --- Label layout with index/description/badge --- */
+.ps-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.2;
+}
+
+.ps-index {
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+}
+
+.ps-label-text {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ps-description {
+    font-size: 0.7rem;
+    opacity: 0.75;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-top: 1px;
+}
+
+.ps-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 6px;
+    border-radius: 9999px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: inherit;
+    font-size: 0.65rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.ps-input:checked + .ps-button .ps-badge {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.dark .ps-badge {
+    background-color: rgba(255, 255, 255, 0.1);
+}

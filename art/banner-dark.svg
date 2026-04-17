@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" role="img" aria-label="Progress Stepper — Filament v5 plugin banner (dark)">
+    <title>Progress Stepper — Filament v5 plugin</title>
+
+    <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0b1020"/>
+            <stop offset="1" stop-color="#111d37"/>
+        </linearGradient>
+
+        <linearGradient id="completed" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#22c55e"/>
+            <stop offset="1" stop-color="#16a34a"/>
+        </linearGradient>
+
+        <linearGradient id="current" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#60a5fa"/>
+            <stop offset="1" stop-color="#3b82f6"/>
+        </linearGradient>
+
+        <linearGradient id="error" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ef4444"/>
+            <stop offset="1" stop-color="#dc2626"/>
+        </linearGradient>
+
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="140%">
+            <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.35"/>
+        </filter>
+    </defs>
+
+    <rect width="1280" height="320" fill="url(#bg)"/>
+
+    <circle cx="1200" cy="80" r="160" fill="#3b82f6" opacity="0.12"/>
+    <circle cx="1060" cy="40" r="90" fill="#8b5cf6" opacity="0.10"/>
+    <circle cx="1240" cy="260" r="110" fill="#22c55e" opacity="0.10"/>
+
+    <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+        <text x="80" y="108" font-size="56" font-weight="800" fill="#f8fafc" letter-spacing="-1.5">Progress Stepper</text>
+        <text x="80" y="148" font-size="22" font-weight="500" fill="#cbd5e1">A Filament v5 plugin for workflow-state visualisation</text>
+        <text x="80" y="186" font-size="14" font-weight="500" fill="#94a3b8" letter-spacing="0.3">Form + Infolist · 3 sizes · 3 themes · 4 connectors · 21 demos · 74 tests · MIT</text>
+    </g>
+
+    <g transform="translate(80, 220)" filter="url(#shadow)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+        <g>
+            <path d="M 0 0 L 150 0 L 175 30 L 150 60 L 0 60 Z" fill="url(#completed)"/>
+            <text x="75" y="37" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">Draft</text>
+        </g>
+
+        <g transform="translate(155, 0)">
+            <path d="M 0 0 L 150 0 L 175 30 L 150 60 L 0 60 L 25 30 Z" fill="url(#completed)"/>
+            <text x="90" y="37" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">Sent</text>
+        </g>
+
+        <g transform="translate(310, 0)">
+            <path d="M 0 0 L 150 0 L 175 30 L 150 60 L 0 60 L 25 30 Z" fill="url(#current)"/>
+            <text x="90" y="37" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">Confirmed</text>
+        </g>
+
+        <g transform="translate(465, 0)">
+            <path d="M 0 0 L 150 0 L 175 30 L 150 60 L 0 60 L 25 30 Z" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+            <text x="90" y="37" font-size="15" font-weight="600" fill="#cbd5e1" text-anchor="middle">Shipped</text>
+        </g>
+
+        <g transform="translate(620, 0)">
+            <path d="M 0 0 L 170 0 L 170 60 L 0 60 L 25 30 Z" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+            <text x="95" y="37" font-size="15" font-weight="600" fill="#cbd5e1" text-anchor="middle">Done</text>
+        </g>
+    </g>
+
+    <g transform="translate(960, 80)" font-family="'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', monospace">
+        <rect x="0" y="0" width="220" height="32" rx="16" fill="#f8fafc" opacity="0.95"/>
+        <text x="14" y="21" font-size="13" font-weight="600" fill="#0f172a">webkul/progress-stepper</text>
+    </g>
+
+    <g transform="translate(960, 220)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#cbd5e1">
+        <g>
+            <circle cx="8" cy="8" r="6" fill="url(#completed)"/>
+            <text x="22" y="12">completed</text>
+        </g>
+        <g transform="translate(0, 22)">
+            <circle cx="8" cy="8" r="6" fill="url(#current)"/>
+            <text x="22" y="12">current</text>
+        </g>
+        <g transform="translate(0, 44)">
+            <circle cx="8" cy="8" r="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+            <text x="22" y="12">upcoming</text>
+        </g>
+        <g transform="translate(120, 22)">
+            <circle cx="8" cy="8" r="6" fill="url(#error)"/>
+            <text x="22" y="12">error</text>
+        </g>
+    </g>
+</svg>
