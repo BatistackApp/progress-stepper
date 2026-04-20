@@ -456,7 +456,7 @@ php artisan vendor:publish --tag="progress-stepper-translations"
 The plugin ships with a full Pest test suite covering every public API surface.
 
 ```bash
-vendor/bin/pest --testsuite=ProgressStepperFeature
+vendor/bin/pest plugins/webkul/progress-stepper/tests/Feature
 ```
 
 **74 tests** (148 assertions) across:
@@ -513,7 +513,7 @@ If you discover a security vulnerability, email `support@webkul.com` rather than
 PRs welcome. Please run the test suite before submitting:
 
 ```bash
-vendor/bin/pest --testsuite=ProgressStepperFeature
+vendor/bin/pest plugins/webkul/progress-stepper/tests/Feature
 vendor/bin/pint plugins/webkul/progress-stepper       # code style
 ```
 
