@@ -27,7 +27,7 @@ class ProgressStepperServiceProvider extends PackageServiceProvider
     {
         FilamentAsset::register([
             Css::make('progress-stepper-styles', __DIR__.'/../resources/dist/progress-stepper.css'),
-        ], 'webkul/progress-stepper');
+        ], 'aureuserp/progress-stepper');
 
         FilamentIcon::register([
             'progress-stepper::step-completed' => 'heroicon-m-check',

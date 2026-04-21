@@ -1,7 +1,7 @@
 # Progress Stepper for Filament v5
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/webkul/progress-stepper.svg?style=flat-square)](https://packagist.org/packages/webkul/progress-stepper)
-[![License](https://img.shields.io/packagist/l/webkul/progress-stepper.svg?style=flat-square)](LICENSE.md)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/aureuserp/progress-stepper.svg?style=flat-square)](https://packagist.org/packages/aureuserp/progress-stepper)
+[![License](https://img.shields.io/packagist/l/aureuserp/progress-stepper.svg?style=flat-square)](LICENSE.md)
 
 A feature-rich **Filament v5** plugin that renders workflow state as an interactive arrow-stepper (form) or a read-only status bar (infolist). Built for business apps where orders, applications, or projects move through named states and you want every screen to show that progress visually.
 
@@ -79,7 +79,7 @@ A feature-rich **Filament v5** plugin that renders workflow state as an interact
 ## Installation
 
 ```bash
-composer require webkul/progress-stepper
+composer require aureuserp/progress-stepper
 ```
 
 The service provider is auto-discovered. The component CSS is registered via `FilamentAsset` and published automatically during `artisan filament:assets`.
@@ -95,7 +95,7 @@ Add the plugin's Blade files to your theme's CSS so Tailwind picks up its utilit
 
 ```css
 /* resources/css/filament/admin/theme.css */
-@source '../../../../vendor/webkul/progress-stepper/resources/**/*.blade.php';
+@source '../../../../vendor/aureuserp/progress-stepper/resources/**/*.blade.php';
 ```
 
 Then rebuild your theme:
@@ -382,7 +382,7 @@ Any color registered on your panel flows through automatically. Just reference i
 
 ### Extending the CSS
 
-The plugin styles ship at `vendor/webkul/progress-stepper/resources/dist/progress-stepper.css`. Publish it if you want to fork it:
+The plugin styles ship at `vendor/aureuserp/progress-stepper/resources/dist/progress-stepper.css`. Publish it if you want to fork it:
 
 ```bash
 php artisan vendor:publish --tag="progress-stepper-config"
@@ -456,7 +456,7 @@ php artisan vendor:publish --tag="progress-stepper-translations"
 The plugin ships with a full Pest test suite covering every public API surface.
 
 ```bash
-vendor/bin/pest plugins/webkul/progress-stepper/tests/Feature
+vendor/bin/pest plugins/aureuserp/progress-stepper/tests/Feature
 ```
 
 **74 tests** (148 assertions) across:
@@ -513,8 +513,8 @@ If you discover a security vulnerability, email `support@webkul.com` rather than
 PRs welcome. Please run the test suite before submitting:
 
 ```bash
-vendor/bin/pest plugins/webkul/progress-stepper/tests/Feature
-vendor/bin/pint plugins/webkul/progress-stepper       # code style
+vendor/bin/pest plugins/aureuserp/progress-stepper/tests/Feature
+vendor/bin/pint plugins/aureuserp/progress-stepper       # code style
 ```
 
 When adding a new configuration option, please:
