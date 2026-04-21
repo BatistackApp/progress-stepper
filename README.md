@@ -19,7 +19,6 @@ A feature-rich **Filament v5** plugin that renders workflow state as an interact
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [Theme setup](#theme-setup)
 - [Quick start](#quick-start)
 - [API reference](#api-reference)
   - [Options](#options)
@@ -83,26 +82,6 @@ composer require aureuserp/progress-stepper
 ```
 
 The service provider is auto-discovered. The component CSS is registered via `FilamentAsset` and published automatically during `artisan filament:assets`.
-
----
-
-## Theme setup
-
-> [!IMPORTANT]
-> If you are using Filament **Panels** and have not set up a custom theme, follow [Creating a custom theme](https://filamentphp.com/docs/5.x/styling/overview#creating-a-custom-theme) first.
-
-Add the plugin's Blade files to your theme's CSS so Tailwind picks up its utility classes:
-
-```css
-/* resources/css/filament/admin/theme.css */
-@source '../../../../vendor/aureuserp/progress-stepper/resources/**/*.blade.php';
-```
-
-Then rebuild your theme:
-
-```bash
-npm run build
-```
 
 ---
 
@@ -483,7 +462,7 @@ Fixtures live at `tests/Feature/Fixtures/` (only a `SampleStatus` BackedEnum).
 |---|---|---|
 | `Target class [Webkul\ProgressStepper\Forms\…] not found` | Autoload cache is stale | `composer dump-autoload && php artisan optimize:clear` |
 | View `progress-stepper::forms.progress-stepper` not found | Service provider not registered | Check the provider is in `bootstrap/providers.php` or that package discovery ran (`php artisan package:discover`) |
-| Steps render without arrows / colors | Theme didn't scan plugin Blade files | Add the `@source` directive shown in [Theme setup](#theme-setup) and rebuild the theme |
+| Steps render without arrows / colors | Filament asset cache stale | `php artisan filament:assets` |
 | Form component throws `Declaration of … must be compatible with Filament\Schemas\Components\Component::…` | You called one of the legacy methods (`separator()`, `compact()`, `description()`, `tooltip()`, `badge()`) which collide with Filament base traits | Use the prefixed names: `connectorShape()`, `iconOnly()`, `stepDescription()`, `stepTooltip()`, `stepBadge()` |
 
 ---
