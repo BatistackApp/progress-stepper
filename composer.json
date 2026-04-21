@@ -1,5 +1,5 @@
 {
-    "name": "webkul/progress-stepper",
+    "name": "aureuserp/progress-stepper",
     "description": "A Filament v5 progress-stepper form & infolist component for visualising workflow state as a horizontal arrow-stepper.",
     "keywords": [
         "webkul",
@@ -9,7 +9,7 @@
         "filament-plugin",
         "progress-stepper"
     ],
-    "homepage": "https://github.com/webkul/progress-stepper",
+    "homepage": "https://github.com/aureuserp/progress-stepper",
     "license": "MIT",
     "authors": [
         {
