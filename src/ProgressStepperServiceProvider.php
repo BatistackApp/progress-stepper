@@ -26,7 +26,7 @@ class ProgressStepperServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         FilamentAsset::register([
-            Css::make('progress-stepper-styles', __DIR__.'/../resources/dist/progress-stepper.css'),
+            Css::make('progress-stepper', __DIR__.'/../resources/dist/progress-stepper.css'),
         ], 'aureuserp/progress-stepper');
 
         FilamentIcon::register([
